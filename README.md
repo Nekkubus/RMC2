@@ -1,0 +1,1 @@
+A quick project to recreate the pausing functionality of IOS on windows. If you're listening to spotify and you start watching a youtube video or playing audio from firefox will pause your spotify music for you
