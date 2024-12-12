@@ -13,8 +13,19 @@ import pystray
 from pystray import MenuItem as item
 from PIL import Image, ImageDraw
 from dotenv import load_dotenv
+import sys
 
-clr.AddReference(r"C:\Users\olir\Documents\RMC2\FIrefoxScanner\ProgramAudio\ProgramAudio\bin\Debug\net9.0\ProgramAudio.dll")
+# clr.AddReference(r"C:\Users\olir\Documents\RMC2\FIrefoxScanner\ProgramAudio\ProgramAudio\bin\Debug\net9.0\ProgramAudio.dll")
+# Get the base directory of the executable (or script during development)
+base_dir = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+
+# Path to the DLLs (adjust to match the relative destination specified in --add-data)
+dll_folder = os.path.join(base_dir, r"FirefoxScanner\ProgramAudio\ProgramAudio\bin\Debug\net9.0")  # Matches the relative destination specified in --add-data
+dll_path = os.path.join(dll_folder, "ProgramAudio.dll")
+
+# Load the DLL
+clr.AddReference(dll_path)
+
 from ProgramAudio import AudioChecker
 
 
