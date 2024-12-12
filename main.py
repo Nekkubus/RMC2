@@ -12,21 +12,25 @@ import threading
 import pystray
 from pystray import MenuItem as item
 from PIL import Image, ImageDraw
+from dotenv import load_dotenv
 
 clr.AddReference(r"C:\Users\olir\Documents\RMC2\FIrefoxScanner\ProgramAudio\ProgramAudio\bin\Debug\net9.0\ProgramAudio.dll")
 from ProgramAudio import AudioChecker
 
 
 
+load_dotenv()
+
+client_id = os.getenv("CLIENT_ID")
+client_secret = os.getenv("CLIENT_SECRET")
+redirect_uri = os.getenv("REDIRECT_URI")
 
 
 
-
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="fd16945408eb403e83e86503e0e2e7d4",
-                                               client_secret="6aea0d2ea62247c6a26c314f7f9dce98",
-                                               redirect_uri="http://localhost:9090",
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id,
+                                               client_secret=client_secret,
+                                               redirect_uri=redirect_uri,
                                                scope="user-read-playback-state user-modify-playback-state"))
-
 def pause_spotify():
     sp.pause_playback()
 
